@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function call(x){
+    if (x!='=' &&x!='+' && x!='-' &&x!='/' &&x!='*'){ 
+    document.getElementById("result").value+=x; }
+    if (document.getElementById("operator").value!="" && x!='=' &&x!='+' && x!='-' && x!='*' && x!='/'){ document.getElementById("op2").value+=x; }
+    if (x=='+' || x=='-' || x=='/' || x=='*')
+    { if (document.getElementById("result").value==""){alert("Can't add operator without first operand");}
+    if (document.getElementById("operator").value=="")
+    {
+    document.getElementById("op1").value=document.getElementById("result").value;
+    document.getElementById("result").value+=x;
+    document.getElementById("operator").value=x; 
+    }
+    else {alert('Error, enter only one operator'); }
+    }
+    if (x=='=' && document.getElementById("operator").value=='+' && 
+    document.getElementById("op1").value!="" && document.getElementById("op2").value!="")
+    { 
+    document.getElementById("result").value=Number(document.getElementById("op1").value)+Number(document.getElementById("op2").value);}
+    else if (x=='=' && document.getElementById("operator").value=='-' && 
+    document.getElementById("op1").value!="" && document.getElementById("op2").value!="")
+    { 
+    document.getElementById("result").value=Number(document.getElementById("op1").value)-
+    Number(document.getElementById("op2").value);}
+    else if (x=='=' && document.getElementById("operator").value=='/' && 
+    document.getElementById("op1").value!="" && document.getElementById("op2").value!="")
+    { 
+    document.getElementById("result").value=Number(document.getElementById("op1").value)/Number(document.getElementById("op2").value);}
+    else if (x=='=' && document.getElementById("operator").value=='*' && 
+    document.getElementById("op1").value!="" && document.getElementById("op2").value!="")
+    { 
+    document.getElementById("result").value=Number(document.getElementById("op1").value)*Number(document.getElementById("op2").value);}
+    check_for_alphabet();
+}
+function check_for_alphabet(){
+    var a=document.getElementById("result").value;
+    for (var i=0;i<a.length;i++)
+    {
+    if (a.charCodeAt(i)>=65 && a.charCodeAt(i)<=90) {alert('Cannot enter alphabets'); clear(); }
+    else if (a.charCodeAt(i)>=97 && a.charCodeAt(i)<=122) {alert('Cannot enter alphabets'); clear();}
+    }
+}
+function clear(){
+    document.getElementById("result").value="";
+    document.getElementById("op1").value="";
+    document.getElementById("op2").value="";
+    document.getElementById("operator").value="";
+}
+</script>
+</head><br><br><br>
+<body align=center background="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRJRlKmVbJOqJ1DFWw0lS2j_9eQ9DaS7lLH8w&usqp=CAU">
+<h1 style="color:white"><b><i><u>CALCULATOR</u></i></b></h1>
+<input type=text name="op1" id="op1">
+<input type=text name="operator" id="operator">
+<input type=text name="op2" id="op2"> 
+<table align=center>
+<tr>
+<td colspan=3><input type=text name="result" id="result" style="text-align:right"></td>
+</tr>
+<tr>
+<td><input type=button value="1" style="width:50px;height:50px" 
+onclick=call(1)></td>
+<td><input type=button value="2" style="width:50px;height:50px" 
+onclick=call(2)></td>
+<td><input type=button value="3" style="width:50px;height:50px" 
+onclick=call(3)></td>
+</tr>
+<tr>
+<td> <input type=button value="4" style="width:50px;height:50px" 
+onclick=call(4)></td>
+<td> <input type=button value="5" style="width:50px;height:50px" 
+onclick=call(5)></td>
+<td> <input type=button value="6" style="width:50px;height:50px" 
+onclick=call(6)></td>
+</tr>
+<tr>
+<td> <input type=button value="7" style="width:50px;height:50px" 
+onclick=call(7)></td>
+<td> <input type=button value="8" style="width:50px;height:50px" 
+onclick=call(8)></td>
+<td> <input type=button value="9" style="width:50px;height:50px" onclick=call(9)></td>
+</tr>
+<tr>
+<td><input type=button value="0" style="width:50px;height:50px" 
+onclick=call(0)></td>
+<td><input type=button value="+" style="width:50px;height:50px" 
+onclick=call('+')></td>
+<td><input type=button value="-" style="width:50px;height:50px" onclick=call('-
+')></td>
+</tr>
+<tr>
+<td><input type=button value="*" style="width:50px;height:50px" 
+onclick=call('*')></td>
+<td><input type=button value="/" style="width:50px;height:50px" 
+onclick=call('/')></td>
+<td><input type=button value="=" style="width:50px;height:50px" 
+onclick=call('=')></td>
+</tr>
+</table>
+</body>
+</html
